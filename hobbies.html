@@ -8,14 +8,14 @@
 <title>Off the Clock · Justin Kuehn</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Barlow:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
 /* Layout: hero, a running feature, then a clean grid of photo cards. */
 :root{
   --bg:#F4F1F8; --surface:#FFFFFF; --ink:#1A1638; --muted:#5E5A7A; --line:#E2DDEC;
   --signal-t:#0E7C70; --agave:#FF5A36; --deep:#1A1638; --signal:#2BB3A3; --signal-ink:#1A1638; --sky:#C8371A; --soft:#ECE7F4;
-  --display:"Bricolage Grotesque","Arial Black",Impact,sans-serif;
-  --body:"Figtree","Segoe UI",Helvetica,Arial,sans-serif;
+  --display:"Big Shoulders Display", Impact, "Arial Narrow", sans-serif;
+  --body:"Barlow", "Segoe UI", Helvetica, Arial, sans-serif;
   --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
   color-scheme:light;
 }
@@ -248,7 +248,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     </ul>
   </div>
 </section>
-<footer><div class="wrap"><span>© 2026 Justin Kuehn · Scottsdale, Arizona</span><a href="index.html">Back to home</a></div></footer>
+<footer><div class="wrap"><span>© 2026 Justin Kuehn · Scottsdale, Arizona</span><a href="index.html">Back to home</a><p class="font-note">Set in Big Shoulders, a typeface made for the City of Chicago. I grew up in Naperville, IL, so I picked a font with Chicago roots.</p></div></footer>
 <script>(function(){var r=document.documentElement;var pages=/^(index|work|story|hobbies)\.html/;
 function tagLinks(t){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(!pages.test(h))return;var hash='',i=h.indexOf('#');if(i>-1){hash=h.slice(i);h=h.slice(0,i);}h=h.split('?')[0];a.setAttribute('href',h+(t?'?theme='+t:'')+hash);});}
 var cur=r.getAttribute('data-jk');if(cur)tagLinks(cur);

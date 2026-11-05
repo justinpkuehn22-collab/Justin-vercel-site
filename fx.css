@@ -115,3 +115,9 @@ html.jk-splash-out::before,html.jk-splash-out::after{opacity:0}
 @keyframes jkBounce{0%{translate:0 -90px;scale:1 1}82%{scale:1 1}100%{translate:0 20px;scale:1.12 .86}}
 @keyframes jkSpin{to{rotate:360deg}}
 @media (prefers-reduced-motion:reduce){html.jk-splash::after{animation:none}}
+
+/* ---------- Chicago Arena type ---------- */
+h1,h2{text-transform:uppercase;font-weight:900!important;letter-spacing:.005em!important;line-height:.9!important}
+h3{font-weight:800}
+.stat b,.int b,.g-ultra .big,.feat .big,.t .big{font-weight:900}
+.font-note{flex-basis:100%;margin:0;font-size:13px;color:var(--muted);order:3}
