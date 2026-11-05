@@ -153,10 +153,32 @@
     var co = new IntersectionObserver(function (es) {
       es.forEach(function (e) {
         if (!e.isIntersecting) return; co.unobserve(e.target); e.target.classList.add('fx-in');
-        e.target.querySelectorAll(':scope > .facts span').forEach(function (s, i) { s.style.transitionDelay = (0.35 + i * 0.08) + 's'; });
+        e.target.querySelectorAll(':scope > .facts span').forEach(function (s, i) { s.style.transitionDelay = (0.9 + i * 0.14) + 's'; });
       });
-    }, { threshold: .15, rootMargin: '0px 0px -10% 0px' });
+    }, { threshold: .2, rootMargin: '0px 0px -18% 0px' });
     cards.forEach(function (c) { co.observe(c); });
+  }
+
+
+  /* ---------- builds: rocking cards ---------- */
+  var csList = document.querySelectorAll('.cs');
+  if (csList.length && !RM && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('fx-builds');
+    var bo = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return; bo.unobserve(e.target);
+        var el = e.target, t = 0.55;
+        var head = el.querySelectorAll('.story > h3, .story > .pitch');
+        head.forEach(function (h, i) { h.style.transitionDelay = (0.35 + i * 0.12) + 's'; });
+        el.querySelectorAll('.b').forEach(function (b, i) { b.style.transitionDelay = (t + i * 0.16) + 's'; });
+        var nb = el.querySelectorAll('.b').length;
+        el.querySelectorAll('.b.diff li').forEach(function (li, i) { li.style.transitionDelay = (t + nb * 0.16 + 0.15 + i * 0.12) + 's'; });
+        el.classList.add('in');
+      });
+    }, { threshold: .04, rootMargin: '0px 0px -6% 0px' });
+    csList.forEach(function (c, i) { if (i % 2) c.classList.add('alt'); bo.observe(c); });
+    /* a card reached by link shows straight away */
+    if (location.hash) { var h = document.getElementById(location.hash.slice(1)); if (h && h.classList.contains('cs')) h.classList.add('in'); }
   }
 
   /* ---------- hoops easter egg ---------- */

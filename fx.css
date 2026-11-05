@@ -58,17 +58,31 @@
   @keyframes menuIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 }
 
-/* ---------- story text motion ---------- */
+/* ---------- story text motion (calm) ---------- */
 @media (prefers-reduced-motion:no-preference){
-  .fx-story .card>.eyebrow{opacity:0;transform:translateX(-36px);transition:opacity .6s ease-out,transform .6s cubic-bezier(.2,.8,.2,1)}
-  .fx-story .card>h2{opacity:0;transform:translateX(70px);transition:opacity .7s ease-out .08s,transform .8s cubic-bezier(.2,.8,.2,1) .08s}
-  .fx-story .card>p{opacity:0;transform:translateY(16px);transition:opacity .6s ease-out .25s,transform .6s ease-out .25s}
-  .fx-story .card>.facts span{opacity:0;transform:scale(.85);transition:opacity .4s ease-out,transform .45s cubic-bezier(.2,1.5,.4,1)}
-  .fx-story .card.fx-in>.eyebrow,.fx-story .card.fx-in>h2,.fx-story .card.fx-in>p{opacity:1;transform:none}
-  .fx-story .card.fx-in>.facts span{opacity:1;transform:none}
   .fx-story .timeline .card{overflow:clip}
-  .fx-story .ch .yr{display:inline-block;transition:transform .5s cubic-bezier(.2,1.5,.4,1)}
+  .fx-story .card>.eyebrow{opacity:0;transform:translateX(-30px);transition:opacity 1s ease-out,transform 1.1s cubic-bezier(.16,.84,.24,1)}
+  .fx-story .card>h2{opacity:0;transform:translateX(56px);transition:opacity 1.2s ease-out .2s,transform 1.4s cubic-bezier(.16,.84,.24,1) .2s}
+  .fx-story .card>p{opacity:0;transform:translateY(14px);transition:opacity 1.1s ease-out .55s,transform 1.1s ease-out .55s}
+  .fx-story .card>.photos,.fx-story .card>.carousel{opacity:0;transform:translateY(18px);transition:opacity 1.2s ease-out .8s,transform 1.2s ease-out .8s}
+  .fx-story .card>.facts span{opacity:0;transform:scale(.88);transition:opacity .7s ease-out,transform .8s cubic-bezier(.2,1.3,.4,1)}
+  .fx-story .card.fx-in>.eyebrow,.fx-story .card.fx-in>h2,.fx-story .card.fx-in>p,.fx-story .card.fx-in>.photos,.fx-story .card.fx-in>.carousel{opacity:1;transform:none}
+  .fx-story .card.fx-in>.facts span{opacity:1;transform:none}
+  .fx-story .ch .yr{display:inline-block;transition:transform .6s cubic-bezier(.2,1.5,.4,1)}
   .fx-story .ch.on .yr{transform:scale(1.12)}
+}
+
+/* ---------- builds: rocking cards + staged story blocks ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .fx-builds .cs{opacity:0;transform-origin:50% 60%}
+  .fx-builds .cs.in{animation:csRock 1.5s cubic-bezier(.22,.8,.3,1) both}
+  .fx-builds .cs.in.alt{animation-name:csRockAlt}
+  @keyframes csRock{0%{opacity:0;transform:perspective(1400px) translateY(36px) rotateY(-16deg) rotateX(4deg)}38%{opacity:1;transform:perspective(1400px) translateY(0) rotateY(7deg) rotateX(0)}62%{transform:perspective(1400px) rotateY(-3.5deg)}80%{transform:perspective(1400px) rotateY(1.4deg)}100%{opacity:1;transform:none}}
+  @keyframes csRockAlt{0%{opacity:0;transform:perspective(1400px) translateY(36px) rotateY(16deg) rotateX(4deg)}38%{opacity:1;transform:perspective(1400px) translateY(0) rotateY(-7deg) rotateX(0)}62%{transform:perspective(1400px) rotateY(3.5deg)}80%{transform:perspective(1400px) rotateY(-1.4deg)}100%{opacity:1;transform:none}}
+  .fx-builds .cs .story>h3,.fx-builds .cs .story>.pitch{opacity:0;transform:translateX(40px);transition:opacity .9s ease-out,transform 1s cubic-bezier(.16,.84,.24,1)}
+  .fx-builds .cs .b{opacity:0;transform:translateY(22px);transition:opacity .9s ease-out,transform 1s cubic-bezier(.16,.84,.24,1)}
+  .fx-builds .cs .b.diff li{opacity:0;transform:translateX(24px);transition:opacity .7s ease-out,transform .8s cubic-bezier(.16,.84,.24,1)}
+  .fx-builds .cs.in .story>h3,.fx-builds .cs.in .story>.pitch,.fx-builds .cs.in .b,.fx-builds .cs.in .b.diff li{opacity:1;transform:none}
 }
 
 /* ---------- story on phones ---------- */
