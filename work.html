@@ -119,6 +119,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 .rv-on .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
 .rv-on .rv.in{opacity:1;transform:none}
 }
+
+.coke-banner{display:inline-flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:22px;padding:12px 18px;border:2px solid color-mix(in srgb,#E4002B 45%,var(--line));border-radius:16px;background:color-mix(in srgb,#E4002B 8%,var(--surface));max-width:100%}
+.coke-banner span{font-weight:700;font-size:17px}
+.coke-banner b{font-family:var(--display);font-weight:900;font-size:30px;color:#E4002B;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.coke-banner small{font-size:13px;color:var(--muted);flex-basis:100%;margin-left:36px;margin-top:-6px}
+dd.coke-dd{display:flex;align-items:center;gap:7px}
+dd.coke-dd b{color:#E4002B;font-variant-numeric:tabular-nums}
+dd.coke-dd small{font-size:12px;color:var(--muted);font-weight:600}
+@media (prefers-color-scheme: dark){:root:not([data-jk="light"]) .coke-banner b,:root:not([data-jk="light"]) dd.coke-dd b{color:#FF4D5E}}
+:root[data-jk="dark"] .coke-banner b,:root[data-jk="dark"] dd.coke-dd b{color:#FF4D5E}
 </style>
 <link rel="stylesheet" href="fx.css">
 </head>
@@ -143,6 +153,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
     <p class="eyebrow">The builds · 16 projects</p>
     <h1>Why I built it.<br><span>Why it's different.</span></h1>
     <p class="lede">Every company and app I've shipped, with the problem behind it, what was already out there, and what I did that the market wasn't doing.</p>
+    <div class="coke-banner" role="note"><svg class="can" viewBox="0 0 16 24" width="22" height="33" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><span><b data-coke="3997">3,997</b> Cokes consumed building these 16 projects.</span><small>Rough count. I don't drink coffee.</small></div>
   </div>
 </header>
 
@@ -164,7 +175,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="intuico">
     <div class="rail">
       <div class="vis"><img src="img/shot_intuico.jpg" alt="Intuico Digital poster" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Operating</span></dd><dt>What</dt><dd>Custom software, websites, apps, marketing, and whatever else a business needs</dd><dt>Clients</dt><dd>Agencies, real estate, e-commerce, law firms, medical practices, software startups and more</dd><dt>Founded</dt><dd>2021</dd><dt>Ownership</dt><dd>Co-founded with my business partner</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Operating</span></dd><dt>What</dt><dd>Custom software, websites, apps, marketing, and whatever else a business needs</dd><dt>Clients</dt><dd>Agencies, real estate, e-commerce, law firms, medical practices, software startups and more</dd><dt>Founded</dt><dd>2021</dd><dt>Ownership</dt><dd>Co-founded with my business partner</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="2021">2,021</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://intuicodigital.com" target="_blank" rel="noopener">Visit intuicodigital.com ↗</a>
     </div>
     <div class="story">
@@ -184,7 +195,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="goautofire">
     <div class="rail">
       <div class="vis"><img src="img/shot_goautofire.jpg" alt="GoAutoFire poster" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage scale">Scaling</span></dd><dt>For</dt><dd>Independent used-car dealers</dd><dt>Growth</dt><dd>Organic search, almost no ad spend</dd><dt>Team</dt><dd>Newest sales rep hired September 2026</dd><dt>Ownership</dt><dd>Co-owned with my Intuico co-founder</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage scale">Scaling</span></dd><dt>For</dt><dd>Independent used-car dealers</dd><dt>Growth</dt><dd>Organic search, almost no ad spend</dd><dt>Team</dt><dd>Newest sales rep hired September 2026</dd><dt>Ownership</dt><dd>Co-owned with my Intuico co-founder</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="640">640</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://goautofire.com" target="_blank" rel="noopener">Visit goautofire.com ↗</a>
     </div>
     <div class="story">
@@ -203,7 +214,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="trydrobe">
     <div class="rail">
       <div class="vis"><img src="img/shot_trydrobe.jpg" alt="Trydrobe poster" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage scale">Scaling</span></dd><dt>For</dt><dd>Shoppers, plus retailers via API</dd><dt>Users</dt><dd>Over 10,000</dd><dt>Ownership</dt><dd>Co-owned with my Intuico co-founder</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage scale">Scaling</span></dd><dt>For</dt><dd>Shoppers, plus retailers via API</dd><dt>Users</dt><dd>Over 10,000</dd><dt>Ownership</dt><dd>Co-owned with my Intuico co-founder</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="512">512</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://trydrobe.com" target="_blank" rel="noopener">Visit trydrobe.com ↗</a>
     </div>
     <div class="story">
@@ -222,7 +233,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="unreal">
     <div class="rail">
       <div class="vis"><img src="img/shot_gw.jpg" alt="Guerilla Warfare pitch deck cover" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage build">In development</span></dd><dt>Genre</dt><dd>Third-person battle royale</dd><dt>Engine</dt><dd>Unreal Engine 5, built with Claude Code</dd><dt>Platforms</dt><dd>PC and consoles</dd><dt>Model</dt><dd>Free to play, cosmetics only</dd><dt>Ownership</dt><dd>Solo project</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage build">In development</span></dd><dt>Genre</dt><dd>Third-person battle royale</dd><dt>Engine</dt><dd>Unreal Engine 5, built with Claude Code</dd><dt>Platforms</dt><dd>PC and consoles</dd><dt>Model</dt><dd>Free to play, cosmetics only</dd><dt>Ownership</dt><dd>Solo project</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="318">318</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://claude.ai/artifact/WMQFyo1HzBrA63pkucjzvV" target="_blank" rel="noopener">View the pitch deck ↗</a>
     </div>
     <div class="story">
@@ -247,7 +258,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="lead-machine">
     <div class="rail">
       <div class="vis"><img src="img/shot_lm.jpg" alt="Lead Machine screenshot" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Used by my team</span></dd><dt>For</dt><dd>Any AE running outbound</dd><dt>Adoption</dt><dd>Reps at my job run their day on it</dd><dt>Built with</dt><dd>Claude</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Used by my team</span></dd><dt>For</dt><dd>Any AE running outbound</dd><dt>Adoption</dt><dd>Reps at my job run their day on it</dd><dt>Built with</dt><dd>Claude</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="96">96</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://claude.ai/artifact/SwwXQkPjx93nikeQYZkY7k" target="_blank" rel="noopener">Try the blank version ↗</a>
       <p class="lock">A clean copy with no lead data, so you can click around.</p>
     </div>
@@ -267,7 +278,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="commission-junkie">
     <div class="rail">
       <div class="vis"><img src="img/shot_cj.jpg" alt="Commission Junkie screenshot" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>A sales team calling car dealerships</dd><dt>Built with</dt><dd>Claude</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>A sales team calling car dealerships</dd><dt>Built with</dt><dd>Claude</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="54">54</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://claude.ai/artifact/A4J7ZsXNUCJEVznhCR16ni" target="_blank" rel="noopener">Open app ↗</a>
     </div>
     <div class="story">
@@ -286,7 +297,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="wsb-terminal">
     <div class="rail">
       <div class="vis"><img src="img/shot_wsb.jpg" alt="WallStreet Bets Terminal screenshot" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>Data</dt><dd>Real market data via Massive</dd><dt>Built with</dt><dd>Claude</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>Data</dt><dd>Real market data via Massive</dd><dt>Built with</dt><dd>Claude</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="71">71</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://claude.ai/artifact/Wa8KGAK4fkS1C4XFUP16RU" target="_blank" rel="noopener">Open app ↗</a>
     </div>
     <div class="story">
@@ -305,7 +316,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="hoops-exchange">
     <div class="rail">
       <div class="vis"><img src="img/shot_hoops.jpg" alt="Hoops Exchange screenshot" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live this season</span></dd><dt>Data</dt><dd>Every box score this season</dd><dt>Built with</dt><dd>Claude</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live this season</span></dd><dt>Data</dt><dd>Every box score this season</dd><dt>Built with</dt><dd>Claude</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="82">82</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://claude.ai/artifact/V36vPS1v5Gox9Y6KWfjAD1" target="_blank" rel="noopener">Open app ↗</a>
     </div>
     <div class="story">
@@ -329,7 +340,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="the-closer">
     <div class="rail">
       <div class="vis"><img src="img/shot_closer.jpg" alt="The Closer start screen" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>B2B reps who want to get better daily</dd><dt>Built in</dt><dd>Lovable</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>B2B reps who want to get better daily</dd><dt>Built in</dt><dd>Lovable</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="47">47</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://id-preview--04c4d16d-3907-4d98-9360-c7922b74144a.lovable.app" target="_blank" rel="noopener">Open app ↗</a>
     </div>
     <div class="story">
@@ -348,7 +359,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="my-last-run">
     <div class="rail">
       <div class="vis"><img src="img/shot_lastrun.jpg" alt="My Last Run welcome screen" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>Runners with a race on the calendar</dd><dt>Built in</dt><dd>Lovable</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>Runners with a race on the calendar</dd><dt>Built in</dt><dd>Lovable</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="23">23</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://id-preview--bdcf397b-622d-477d-acb7-1abfdcdb4f65.lovable.app" target="_blank" rel="noopener">Open app ↗</a>
     </div>
     <div class="story">
@@ -367,7 +378,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="walkon">
     <div class="rail">
       <div class="vis"><img src="img/shot_walkon.jpg" alt="WalkOn sign-in screen" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>Coaches, athletes and parents</dd><dt>Built in</dt><dd>Lovable</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>Coaches, athletes and parents</dd><dt>Built in</dt><dd>Lovable</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="31">31</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://id-preview--fe172304-307c-4858-a96e-ae3cf5811a52.lovable.app" target="_blank" rel="noopener">Open app ↗</a>
       <p class="lock">Opens on a sign-in screen.</p>
     </div>
@@ -387,7 +398,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="missile-mania">
     <div class="rail">
       <div class="vis"><img src="img/shot_missile.jpg" alt="Missile Mania launch screen" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage build">Balancing</span></dd><dt>Genre</dt><dd>Tap-to-thrust arcade</dd><dt>Built in</dt><dd>Lovable</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage build">Balancing</span></dd><dt>Genre</dt><dd>Tap-to-thrust arcade</dd><dt>Built in</dt><dd>Lovable</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="39">39</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://id-preview--9728c3f0-ca05-4153-9701-315631acdc00.lovable.app" target="_blank" rel="noopener">Play it ↗</a>
     </div>
     <div class="story">
@@ -406,7 +417,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="circle-of-friends">
     <div class="rail">
       <div class="vis"><img src="img/shot_circle.jpg" alt="Circle of Friends home page" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>Anyone who wants to be a better friend</dd><dt>Built in</dt><dd>Lovable</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>Anyone who wants to be a better friend</dd><dt>Built in</dt><dd>Lovable</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="18">18</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://id-preview--9604305a-4ebb-4d1f-936f-ec2f463b9193.lovable.app" target="_blank" rel="noopener">Open app ↗</a>
     </div>
     <div class="story">
@@ -425,7 +436,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="walk-the-path">
     <div class="rail">
       <div class="vis"><img src="img/shot_path.jpg" alt="Walk the Path tradition picker" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>Curious minds, five minutes at a time</dd><dt>Built in</dt><dd>Lovable</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>Curious minds, five minutes at a time</dd><dt>Built in</dt><dd>Lovable</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="22">22</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://id-preview--449f8e3a-1a97-40b5-98aa-3fd0b3b67470.lovable.app" target="_blank" rel="noopener">Open app ↗</a>
     </div>
     <div class="story">
@@ -444,7 +455,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="honey-bear">
     <div class="rail">
       <div class="vis"><img src="img/shot_honey.jpg" alt="Honey Bear Kitchen unlock screen" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>Cooks with dietary needs</dd><dt>Built in</dt><dd>Lovable</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>Cooks with dietary needs</dd><dt>Built in</dt><dd>Lovable</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="14">14</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://id-preview--b6b3ecbc-31b1-4ade-b1c3-0fae0a0726ac.lovable.app" target="_blank" rel="noopener">Open app ↗</a>
       <p class="lock">Password-protected.</p>
     </div>
@@ -464,7 +475,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
   <article class="cs" id="poetry-shelf">
     <div class="rail">
       <div class="vis"><img src="img/shot_poetry.jpg" alt="Poetry Shelf entry screen" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>My own poems</dd><dt>Built in</dt><dd>Lovable</dd></dl>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>My own poems</dd><dt>Built in</dt><dd>Lovable</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="9">9</b><small>and counting</small></dd></dl>
       <a class="btn" href="https://id-preview--0a0bd705-e65c-4d59-aa2b-4a47ea7b3f06.lovable.app" target="_blank" rel="noopener">Open app ↗</a>
       <p class="lock">Password-protected.</p>
     </div>
