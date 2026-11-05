@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script>(function(){var t=null;try{t=new URLSearchParams(location.search).get("theme");}catch(e){}if(t!=="dark"&&t!=="light"){try{t=localStorage.getItem("jk-theme");}catch(e){}}if(t!=="dark"&&t!=="light"){try{t=sessionStorage.getItem("jk-theme");}catch(e){}}if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-jk",t);try{localStorage.setItem("jk-theme",t);}catch(e){}try{sessionStorage.setItem("jk-theme",t);}catch(e){}}})();(function(){window.__jkT0=Date.now();if(matchMedia("(prefers-reduced-motion: reduce)").matches)return;var seen=false;try{seen=sessionStorage.getItem("jk-splash")==="1";sessionStorage.setItem("jk-splash","1");}catch(e){seen=true;}if(seen)return;var r=document.documentElement;r.classList.add("jk-splash");setTimeout(function(){r.classList.remove("jk-splash","jk-splash-out")},3500);})();</script>
+
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Off the Clock · Justin Kuehn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: hero, a running feature, then a clean grid of photo cards. */
+:root{
+  --bg:#F4F1F8; --surface:#FFFFFF; --ink:#1A1638; --muted:#5E5A7A; --line:#E2DDEC;
+  --signal-t:#0E7C70; --agave:#FF5A36; --deep:#1A1638; --signal:#2BB3A3; --signal-ink:#1A1638; --sky:#C8371A; --soft:#ECE7F4;
+  --display:"Bricolage Grotesque","Arial Black",Impact,sans-serif;
+  --body:"Figtree","Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-jk="light"]){
+  --bg:#0A0A0A; --surface:#151515; --ink:#F2F2EF; --muted:#A6A6A1; --line:#2A2A2A;
+  --signal-t:#3CCFBC; --agave:#FF6A3D; --deep:#161616; --signal:#2BB3A3; --signal-ink:#0A0A0A; --sky:#FF7A50; --soft:#1C1C1C; color-scheme:dark}}
+:root[data-jk="dark"]{
+  --bg:#0A0A0A; --surface:#151515; --ink:#F2F2EF; --muted:#A6A6A1; --line:#2A2A2A;
+  --signal-t:#3CCFBC; --agave:#FF6A3D; --deep:#161616; --signal:#2BB3A3; --signal-ink:#0A0A0A; --sky:#FF7A50; --soft:#1C1C1C; color-scheme:dark}
+*{box-sizing:border-box}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sky);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1;letter-spacing:-.02em;margin:0;text-wrap:balance}
+.eyebrow{font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sky);margin:0}
+.btn{display:inline-flex;align-items:center;gap:.5em;font-weight:700;font-size:15px;text-decoration:none;padding:.75em 1.2em;border-radius:999px;background:var(--signal);color:var(--signal-ink);box-shadow:0 4px 0 color-mix(in srgb,var(--signal) 55%,#000);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:800;font-size:20px}
+.brand img{width:36px;height:36px;border-radius:50%;border:2px solid var(--signal)}
+.links{display:flex;gap:22px;align-items:center;font-weight:600;font-size:15px}
+.links a{text-decoration:none}
+.links a:not(.btn):hover,.links a[aria-current]{color:var(--signal-t)}
+.links .btn{padding:.55em 1.1em;font-size:14px}
+@media (max-width:760px){.links{gap:14px;font-size:14px}.links a[href="index.html"],.links a[href="index.html#apps"],.links a[href="hobbies.html"]:not([aria-current]){display:none}}
+@media (max-width:460px){.brand span,.brand{font-size:0}.brand img{width:34px;height:34px}}
+
+header.top{padding-block:clamp(44px,7vw,88px) clamp(32px,5vw,56px)}
+header.top .wrap{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:32px;align-items:center}
+@media (max-width:700px){header.top .wrap{grid-template-columns:1fr}.face{order:-1;width:140px}}
+header.top h1{font-size:clamp(56px,9vw,116px);font-weight:800;margin-top:12px}
+header.top h1 span{color:var(--signal-t)}
+header.top p.lede{color:var(--muted);font-size:clamp(18px,2vw,22px);max-width:44ch;margin:22px 0 0}
+.face{aspect-ratio:1;max-width:100%;border-radius:50%;overflow:hidden;border:5px solid var(--ink);box-shadow:10px 10px 0 var(--signal);background:var(--sky)}
+.face img{width:100%;height:100%;object-fit:cover;display:block}
+
+.feat{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:center;background:var(--deep);color:#F4F1F8;border-radius:22px;padding:clamp(22px,3.5vw,40px);margin-top:8px}
+@media (max-width:820px){.feat{grid-template-columns:1fr}}
+.feat .k{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--agave)}
+.feat h2{font-size:clamp(32px,4vw,48px);font-weight:800;margin:10px 0 14px}
+.feat .big{font-family:var(--display);font-weight:800;font-size:clamp(64px,8vw,104px);line-height:.85;letter-spacing:-.03em;color:var(--signal)}
+.feat .big small{display:block;font-size:.26em;letter-spacing:.02em;color:#F4F1F8;margin-top:8px}
+.feat p{color:rgba(244,241,248,.82);margin:16px 0}
+.feat .pills span{background:rgba(255,255,255,.1);color:#F4F1F8}.feat .pills span b{color:var(--signal)}
+.feat a.more{display:inline-block;margin-top:18px;font-weight:700;color:var(--agave);text-decoration:none}
+.feat .media{display:grid;grid-template-columns:minmax(0,.62fr) minmax(0,1fr);gap:12px;align-items:stretch}
+.feat .media video,.feat .media img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block;background:#000;aspect-ratio:9/14}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills span{font-size:14px;font-weight:700;padding:5px 12px;border-radius:999px;background:color-mix(in srgb,var(--agave) 14%,var(--surface))}
+.pills span b{color:var(--sky)}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;padding-block:18px 0}
+@media (max-width:900px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.cards{grid-template-columns:1fr}}
+.card{background:var(--surface);border:2px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card figure{margin:0;aspect-ratio:4/3;position:relative;overflow:hidden;background:var(--soft)}
+.card figure img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;display:block}
+.card figure::before{content:"";position:absolute;inset:-20px;background:var(--src) center/cover no-repeat;filter:blur(18px) brightness(.85);transform:scale(1.1)}
+.card figure.dark{background:#000}.card figure.dark::before,.card figure.paper::before{display:none}.card figure.paper{background:#F2F2F0}.card figure.paper img{padding:10px}
+.card .body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card .k{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sky)}
+.card h2{font-size:24px;font-weight:800}
+.card p{margin:0;color:var(--muted);font-size:15.5px}
+.card a.more{margin-top:auto;padding-top:8px;font-weight:700;font-size:14.5px;color:var(--signal-t);text-decoration:none}
+.card a.more:hover{text-decoration:underline}
+.close{background:var(--signal);color:var(--signal-ink)}
+.close .wrap{padding-block:clamp(48px,7vw,84px);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.close h2{font-size:clamp(38px,6vw,78px);font-weight:800;max-width:13ch}
+.close .btn{background:var(--deep);color:#F4F1F8;box-shadow:none;font-size:17px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:28px;color:var(--muted);font-size:14px}
+.theme-tg{width:38px;height:38px;flex:none;border-radius:50%;border:2px solid var(--line);background:var(--surface);color:var(--ink);display:grid;place-items:center;cursor:pointer;padding:0}
+.theme-tg:hover{border-color:var(--signal)}
+.theme-tg .i-sun{display:none}
+:root[data-jk="dark"] .theme-tg .i-sun{display:block}:root[data-jk="dark"] .theme-tg .i-moon{display:none}
+@media (prefers-color-scheme: dark){:root:not([data-jk="light"]) .theme-tg .i-sun{display:block}:root:not([data-jk="light"]) .theme-tg .i-moon{display:none}}
+@media (prefers-reduced-motion:no-preference){
+.rv-on .rv{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+.rv-on .rv.in{opacity:1;transform:none}
+}
+.books{padding-block:56px 64px}
+.books-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.books-head .k{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sky)}
+.books-head h2{font-size:clamp(32px,4vw,48px);font-weight:800;margin-top:8px}
+.books-head p{margin:0;color:var(--muted);max-width:40ch}
+.shelf-row{margin-top:22px}
+.shelf-row h3{font-size:19px;font-weight:700;margin-bottom:12px}
+.shelf{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 16px;-webkit-overflow-scrolling:touch;scrollbar-width:thin;overscroll-behavior-x:contain}
+.book{flex:0 0 160px;aspect-ratio:2/3;scroll-snap-align:start;background:var(--bg);color:var(--fg);border-radius:6px 12px 12px 6px;padding:16px 14px 14px 20px;display:flex;flex-direction:column;position:relative;box-shadow:0 10px 22px rgba(0,0,0,.22),inset 6px 0 0 rgba(0,0,0,.18),inset 8px 0 0 rgba(255,255,255,.08);transition:transform .25s ease,box-shadow .25s ease}
+.book:hover{transform:translateY(-6px) rotate(-1.5deg);box-shadow:0 18px 30px rgba(0,0,0,.28),inset 6px 0 0 rgba(0,0,0,.18)}
+.book b{font-family:var(--display);font-weight:800;font-size:20px;line-height:1.05;letter-spacing:-.01em;margin-top:auto;margin-bottom:auto;text-wrap:balance}
+.book .b-cat{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;opacity:.7}
+.book .b-au{font-size:12.5px;font-weight:600;opacity:.85;border-top:1.5px solid currentColor;padding-top:8px}
+@media (max-width:560px){.book{flex-basis:140px}.book b{font-size:18px}}
+</style>
+<link rel="stylesheet" href="fx.css">
+</head>
+<body>
+<nav class="nav" aria-label="Main">
+  <div class="wrap">
+    <a class="brand" href="index.html"><img src="img/avatar.jpg" alt="">Justin Kuehn</a>
+    <div class="links">
+      <a href="index.html">Home</a>
+      <a href="story.html">My story</a>
+      <a href="work.html">The builds</a>
+      <a href="hobbies.html" aria-current="page">Off the clock</a>
+<button class="theme-tg" type="button" aria-label="Toggle dark mode" title="Toggle dark mode"><svg class="i-moon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="i-sun" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+            <a class="btn" href="https://www.linkedin.com/search/results/people/?keywords=Justin%20Kuehn" target="_blank" rel="noopener">Connect</a>
+    </div>
+  </div>
+</nav>
+<header class="top">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Off the clock</p>
+      <h1>Life away <span>from the desk.</span></h1>
+      <p class="lede">Running, hiking, hoops, the gym, chess and good tables with friends. The same energy I bring to a pipeline, pointed at everything else.</p>
+    </div>
+    <div class="face"><img src="img/avatar.jpg" alt="Illustrated portrait of Justin Kuehn"></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="feat" aria-labelledby="h-run">
+    <div>
+      <span class="k">Running</span>
+      <h2 id="h-run">From 5Ks to a 25-mile ultra</h2>
+      <div class="big">25+<small>miles at my first ultra</small></div>
+      <p>I ran the Revival at Papago Park in Phoenix and kept going past the marathon mark. Next up is a marathon on December 12, 2026, and I'm training for it on the plan app I built.</p>
+      <div class="pills"><span>5K under <b>23 min</b></span><span>10K under <b>50 min</b></span><span>Marathon <b>Dec 12</b></span></div>
+      <a class="more" href="work.html#my-last-run">See My Last Run →</a>
+    </div>
+    <div class="media">
+      <video src="img/ultra.mp4" poster="img/ultra_poster.jpg" autoplay muted loop playsinline aria-label="Running the Revival ultra trail past the red rocks of Papago Park"></video>
+      <img src="img/run_group.jpg" alt="Justin running a desert trail with a group at sunset" loading="lazy">
+    </div>
+  </section>
+  <div class="cards">
+    <article class="card">
+      <figure><img src="img/hike.jpg" alt="Justin hiking a jungle trail" loading="lazy"></figure>
+      <div class="body">
+        <span class="k">Hiking</span>
+        <h2>Weekend trails</h2>
+        <p>Long hikes whenever I'm off the road.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure><img src="img/coach.jpg" alt="Justin coaching a City of Tempe girls youth basketball team" loading="lazy"></figure>
+      <div class="body">
+        <span class="k">Basketball</span>
+        <h2>Player and coach</h2>
+        <p>I play, coach kids through @justinteachesbasketball and train for vertical jump.</p>
+        <a class="more" href="work.html#walkon">It's why I built WalkOn →</a>
+      </div>
+    </article>
+    <article class="card">
+      <figure><img src="img/boxing_gym.jpg" alt="Justin in a graffiti-covered boxing gym lined with heavy bags" loading="lazy"></figure>
+      <div class="body">
+        <span class="k">Boxing &amp; lifting</span>
+        <h2>Boxing and lifting</h2>
+        <p>Boxing, running and lifting, with nutrition tracked like a pipeline.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure><img src="img/chess_play.jpg" alt="Justin playing chess with a friend" loading="lazy"></figure>
+      <div class="body">
+        <span class="k">Chess</span>
+        <h2>Rapid and blitz</h2>
+        <p>I just like to play chess, mostly rapid and blitz. Fast games, quick decisions.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure><img src="img/dinner_wide.jpg" alt="Justin at dinner with friends" loading="lazy" style="object-fit:cover"></figure>
+      <div class="body">
+        <span class="k">The crew</span>
+        <h2>Time with friends</h2>
+        <p>I enjoy grabbing a bite to eat with my friends and relaxing.</p>
+      </div>
+    </article>
+    <article class="card">
+      <figure class="paper"><img src="img/swan.jpg" alt="Ink drawing of a swan by Justin" loading="lazy"></figure>
+      <div class="body">
+        <span class="k">Drawing</span>
+        <h2>Pen and paper</h2>
+        <p>I enjoy drawing as a side hobby. It's how I slow down and switch off.</p>
+      </div>
+    </article>
+  </div>
+  <section class="books" aria-labelledby="h-books">
+    <div class="books-head">
+      <div><span class="k">Reading</span><h2 id="h-books">Books that shaped me</h2></div>
+      <p>My favorites of all time, from political philosophy to cold calling. Swipe each shelf.</p>
+    </div>
+    <div class="shelf-row">
+      <h3>Politics &amp; society</h3>
+      <div class="shelf" tabindex="0" aria-label="Politics &amp; society books"><div class="book" style="--bg:#1A1638;--fg:#FF5A36"><b>1984</b><span class="b-au">George Orwell</span></div><div class="book" style="--bg:#F2E8D5;--fg:#8A2B1A"><b>Common Sense</b><span class="b-au">Thomas Paine</span></div><div class="book" style="--bg:#0E4C5C;--fg:#F2E8D5"><b>Rights of Man</b><span class="b-au">Thomas Paine</span></div></div>
+    </div>
+    <div class="shelf-row">
+      <h3>Economics &amp; business</h3>
+      <div class="shelf" tabindex="0" aria-label="Economics &amp; business books"><div class="book" style="--bg:#2E4A2E;--fg:#E9D9A6"><b>The Wealth of Nations</b><span class="b-au">Adam Smith</span></div><div class="book" style="--bg:#F4F1F8;--fg:#1A1638"><b>Zero to One</b><span class="b-au">Peter Thiel</span></div><div class="book" style="--bg:#FF5A36;--fg:#1A1638"><b>Cold Calling Sucks (and That's Why It Works)</b><span class="b-au">Armand Farrokh &amp; Nick Cegelski</span></div></div>
+    </div>
+    <div class="shelf-row">
+      <h3>Strategy &amp; power</h3>
+      <div class="shelf" tabindex="0" aria-label="Strategy &amp; power books"><div class="book" style="--bg:#5A1010;--fg:#E9C46A"><b>The 33 Strategies of War</b><span class="b-au">Robert Greene</span></div><div class="book" style="--bg:#111111;--fg:#D4AF37"><b>The 48 Laws of Power</b><span class="b-au">Robert Greene</span></div><div class="book" style="--bg:#E6DCC8;--fg:#5A1010"><b>Mastery</b><span class="b-au">Robert Greene</span></div></div>
+    </div>
+    <div class="shelf-row">
+      <h3>Discipline &amp; focus</h3>
+      <div class="shelf" tabindex="0" aria-label="Discipline &amp; focus books"><div class="book" style="--bg:#16324F;--fg:#F4F1F8"><b>Discipline Is Destiny</b><span class="b-au">Ryan Holiday</span></div><div class="book" style="--bg:#0A0A0A;--fg:#2BB3A3"><b>Winning: The Unforgiving Race to Greatness</b><span class="b-au">Tim S. Grover</span></div><div class="book" style="--bg:#E9EEF2;--fg:#16324F"><b>Deep Work</b><span class="b-au">Cal Newport</span></div></div>
+    </div>
+    <div class="shelf-row">
+      <h3>Design &amp; thinking</h3>
+      <div class="shelf" tabindex="0" aria-label="Design &amp; thinking books"><div class="book" style="--bg:#2BB3A3;--fg:#0A0A0A"><b>The Design of Everyday Things</b><span class="b-au">Don Norman</span></div><div class="book" style="--bg:#FFD166;--fg:#1A1638"><b>Change by Design</b><span class="b-au">Tim Brown</span></div></div>
+    </div>
+  </section>
+</main>
+
+<section class="close" aria-labelledby="close-h">
+  <div class="wrap">
+    <h2 id="close-h">Looking to connect?</h2>
+    <a class="btn" href="https://www.linkedin.com/search/results/people/?keywords=Justin%20Kuehn" target="_blank" rel="noopener">Connect on LinkedIn →</a>
+    <ul class="contacts" role="list">
+      <li><a href="mailto:Justin@intuicodigital.com"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><small>Projects &amp; personal</small><b>Justin@intuicodigital.com</b></span></a></li>
+      <li><a href="mailto:Justin.kuehn@engine.com"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 13.5L3 11l1.5-1.5 8 1L17 6c1-1 3-1.5 3.5-1s0 2.5-1 3.5l-4.5 4.5 1 8L14.5 22l-2.5-7.5"/></svg><span><small>Business travel</small><b>Justin.kuehn@engine.com</b></span></a></li>
+      <li><a href="tel:+16302001959"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><span><small>Podcast or coffee</small><b>630.200.1959</b></span></a></li>
+    </ul>
+  </div>
+</section>
+<footer><div class="wrap"><span>© 2026 Justin Kuehn · Scottsdale, Arizona</span><a href="index.html">Back to home</a></div></footer>
+<script>(function(){var r=document.documentElement;var pages=/^(index|work|story|hobbies)\.html/;
+function tagLinks(t){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(!pages.test(h))return;var hash='',i=h.indexOf('#');if(i>-1){hash=h.slice(i);h=h.slice(0,i);}h=h.split('?')[0];a.setAttribute('href',h+(t?'?theme='+t:'')+hash);});}
+var cur=r.getAttribute('data-jk');if(cur)tagLinks(cur);
+var b=document.querySelector('.theme-tg');if(!b)return;b.addEventListener('click',function(){var c=r.getAttribute('data-jk');if(!c){c=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}var n=c==='dark'?'light':'dark';r.setAttribute('data-jk',n);try{localStorage.setItem('jk-theme',n);}catch(e){}try{sessionStorage.setItem('jk-theme',n);}catch(e){}tagLinks(n);});})();</script>
+<script>document.querySelectorAll('.photos figure:not(.contain) img, .t figure:not(.contain) img').forEach(function(i){i.parentNode.style.setProperty('--src','url("'+i.getAttribute('src')+'")');});</script>
+<script>window.__rvSel=".feat,.card,.shelf-row";</script>
+<script>(function(){if(!('IntersectionObserver' in window)||matchMedia('(prefers-reduced-motion: reduce)').matches)return;var sel=window.__rvSel||'';var els=document.querySelectorAll(sel);if(!els.length)return;document.documentElement.classList.add('rv-on');var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var d=+(e.target.dataset.rvd||0);setTimeout(function(){e.target.classList.add('in')},d);io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:.08});els.forEach(function(el){var sib=el.parentNode?[].indexOf.call(el.parentNode.children,el):0;el.dataset.rvd=Math.min(sib,5)*70;el.classList.add('rv');io.observe(el);});})();</script>
+<script src="fx.js"></script>
+</body>
+</html>
