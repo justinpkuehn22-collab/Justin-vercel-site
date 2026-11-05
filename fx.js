@@ -12,7 +12,7 @@
 (function(){
   var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var FINE = matchMedia('(pointer: fine)').matches;
-  var PAGES = /^(index|work|story|hobbies)\.html/;
+  var PAGES = /^(index|work|story|hobbies|connect)\.html/;
 
 
   /* ---------- splash out ---------- */
@@ -181,6 +181,75 @@
     if (location.hash) { var h = document.getElementById(location.hash.slice(1)); if (h && h.classList.contains('cs')) h.classList.add('in'); }
   }
 
+  /* ---------- hoops court engine (shared) ---------- */
+  function makeCourt(cv, onMake) {
+    var cx = cv.getContext('2d');
+    var W = 340, H = 300, made = 0, streak = 0, flash = 0, msg = '';
+    var rim = { x1: 236, x2: 288, y: 108 }, board = { x: 296, y1: 50, y2: 120 };
+    var ball, drag = null, running = false;
+    function reset() { ball = { x: 70, y: 240, vx: 0, vy: 0, r: 13, live: false, scored: false, t: 0 }; }
+    reset();
+    function css(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || '#888'; }
+    function draw() {
+      cx.clearRect(0, 0, W, H);
+      cx.fillStyle = css('--soft'); cx.fillRect(0, 262, W, H - 262);
+      cx.strokeStyle = css('--line'); cx.lineWidth = 2; cx.beginPath(); cx.moveTo(0, 262); cx.lineTo(W, 262); cx.stroke();
+      // board + pole
+      cx.fillStyle = css('--muted'); cx.fillRect(board.x + 6, board.y2, 5, 262 - board.y2);
+      cx.fillStyle = css('--surface'); cx.strokeStyle = css('--ink'); cx.lineWidth = 3;
+      cx.fillRect(board.x, board.y1, 8, board.y2 - board.y1); cx.strokeRect(board.x, board.y1, 8, board.y2 - board.y1);
+      // net
+      cx.strokeStyle = css('--muted'); cx.lineWidth = 1.5;
+      for (var i = 0; i <= 4; i++) { var nx = rim.x1 + (rim.x2 - rim.x1) * i / 4; cx.beginPath(); cx.moveTo(nx, rim.y); cx.lineTo(rim.x1 + 8 + (rim.x2 - rim.x1 - 16) * i / 4, rim.y + 30); cx.stroke(); }
+      // ball
+      cx.fillStyle = css('--agave'); cx.beginPath(); cx.arc(ball.x, ball.y, ball.r, 0, 7); cx.fill();
+      cx.strokeStyle = 'rgba(0,0,0,.45)'; cx.lineWidth = 1.5; cx.beginPath(); cx.moveTo(ball.x - ball.r, ball.y); cx.lineTo(ball.x + ball.r, ball.y); cx.moveTo(ball.x, ball.y - ball.r); cx.lineTo(ball.x, ball.y + ball.r); cx.stroke();
+      // rim (front)
+      cx.strokeStyle = css('--agave'); cx.lineWidth = 4; cx.beginPath(); cx.moveTo(rim.x1, rim.y); cx.lineTo(rim.x2 + 8, rim.y); cx.stroke();
+      // aim
+      if (drag) {
+        var vx = (drag.sx - drag.x) * .16, vy = (drag.sy - drag.y) * .16, px = ball.x, py = ball.y;
+        cx.fillStyle = css('--signal');
+        for (var k = 0; k < 30; k++) { vy += .5; px += vx; py += vy; if (k % 3 === 2) { cx.globalAlpha = 1 - k / 30; cx.beginPath(); cx.arc(px, py, 3, 0, 7); cx.fill(); } }
+        cx.globalAlpha = 1;
+      }
+      if (flash > 0) { cx.fillStyle = css('--signal-t'); cx.font = '800 30px ' + (css('--display') || 'sans-serif'); cx.textAlign = 'center'; cx.globalAlpha = Math.min(1, flash / 20); cx.fillText(msg, W / 2, 60); cx.globalAlpha = 1; flash--; }
+    }
+    function step() {
+      if (ball.live) {
+        ball.vy += .5; ball.x += ball.vx; ball.y += ball.vy; ball.t++;
+        // backboard
+        if (ball.x + ball.r > board.x && ball.x < board.x + 8 && ball.y > board.y1 && ball.y < board.y2 && ball.vx > 0) { ball.x = board.x - ball.r; ball.vx *= -.55; }
+        // rim ends
+        [rim.x1, rim.x2 + 8].forEach(function (rx) {
+          var dx = ball.x - rx, dy = ball.y - rim.y, d = Math.hypot(dx, dy);
+          if (d < ball.r + 2) { var nx = dx / d, ny = dy / d, dot = ball.vx * nx + ball.vy * ny; if (dot < 0) { ball.vx -= 1.6 * dot * nx; ball.vy -= 1.6 * dot * ny; } ball.x = rx + nx * (ball.r + 2); ball.y = rim.y + ny * (ball.r + 2); }
+        });
+        // score
+        if (!ball.scored && ball.vy > 0 && ball.y - ball.vy < rim.y && ball.y >= rim.y && ball.x > rim.x1 + 4 && ball.x < rim.x2 + 4) {
+          ball.scored = true; made++; streak++; if (onMake) onMake(made, streak);
+          msg = streak >= 3 ? 'On fire! ' + streak + ' straight' : (streak === 2 ? 'Back to back!' : 'Bucket!'); flash = 50;
+        }
+        // floor
+        if (ball.y + ball.r > 262) { ball.y = 262 - ball.r; ball.vy *= -.5; ball.vx *= .8; }
+        if (ball.x < -30 || ball.x > W + 30 || ball.t > 200) { if (!ball.scored) streak = 0; reset(); }
+      }
+      draw();
+      if (running) requestAnimationFrame(step);
+    }
+    function pt(e) { var r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) * W / r.width, y: (e.clientY - r.top) * H / r.height }; }
+    cv.addEventListener('pointerdown', function (e) { if (ball.live) return; var p = pt(e); if (Math.hypot(p.x - ball.x, p.y - ball.y) > 60) return; drag = { sx: ball.x, sy: ball.y, x: p.x, y: p.y }; cv.setPointerCapture(e.pointerId); });
+    cv.addEventListener('pointermove', function (e) { if (!drag) return; var p = pt(e); drag.x = p.x; drag.y = p.y; });
+    cv.addEventListener('pointerup', function () {
+      if (!drag) return;
+      ball.vx = Math.max(-18, Math.min(18, (drag.sx - drag.x) * .16)); ball.vy = Math.max(-18, Math.min(18, (drag.sy - drag.y) * .16));
+      if (Math.hypot(ball.vx, ball.vy) > 1.5) ball.live = true; drag = null;
+    });
+    function run(v) { if (v && !running) { running = true; requestAnimationFrame(step); } else if (!v) running = false; }
+    return { run: run };
+  }
+  window.jkCourt = makeCourt;
+
   /* ---------- hoops easter egg ---------- */
   var foot = document.querySelector('footer .wrap');
   if (!foot) return;
@@ -192,72 +261,12 @@
   box.setAttribute('role', 'dialog'); box.setAttribute('aria-label', 'Hoops mini-game');
   box.innerHTML = '<header><span>Shoot around · <b class="hs">0</b> made</span><button type="button" aria-label="Close">✕</button></header><canvas width="340" height="300"></canvas><p>Drag back from the ball and let go to shoot.</p>';
   document.body.appendChild(box);
-  var cv = box.querySelector('canvas'), cx = cv.getContext('2d'), scoreEl = box.querySelector('.hs');
-  var W = 340, H = 300, made = 0, streak = 0, flash = 0, msg = '';
-  var rim = { x1: 236, x2: 288, y: 108 }, board = { x: 296, y1: 50, y2: 120 };
-  var ball, drag = null, running = false;
-  function reset() { ball = { x: 70, y: 240, vx: 0, vy: 0, r: 13, live: false, scored: false, t: 0 }; }
-  reset();
-  function css(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim() || '#888'; }
-  function draw() {
-    cx.clearRect(0, 0, W, H);
-    cx.fillStyle = css('--soft'); cx.fillRect(0, 262, W, H - 262);
-    cx.strokeStyle = css('--line'); cx.lineWidth = 2; cx.beginPath(); cx.moveTo(0, 262); cx.lineTo(W, 262); cx.stroke();
-    // board + pole
-    cx.fillStyle = css('--muted'); cx.fillRect(board.x + 6, board.y2, 5, 262 - board.y2);
-    cx.fillStyle = css('--surface'); cx.strokeStyle = css('--ink'); cx.lineWidth = 3;
-    cx.fillRect(board.x, board.y1, 8, board.y2 - board.y1); cx.strokeRect(board.x, board.y1, 8, board.y2 - board.y1);
-    // net
-    cx.strokeStyle = css('--muted'); cx.lineWidth = 1.5;
-    for (var i = 0; i <= 4; i++) { var nx = rim.x1 + (rim.x2 - rim.x1) * i / 4; cx.beginPath(); cx.moveTo(nx, rim.y); cx.lineTo(rim.x1 + 8 + (rim.x2 - rim.x1 - 16) * i / 4, rim.y + 30); cx.stroke(); }
-    // ball
-    cx.fillStyle = css('--agave'); cx.beginPath(); cx.arc(ball.x, ball.y, ball.r, 0, 7); cx.fill();
-    cx.strokeStyle = 'rgba(0,0,0,.45)'; cx.lineWidth = 1.5; cx.beginPath(); cx.moveTo(ball.x - ball.r, ball.y); cx.lineTo(ball.x + ball.r, ball.y); cx.moveTo(ball.x, ball.y - ball.r); cx.lineTo(ball.x, ball.y + ball.r); cx.stroke();
-    // rim (front)
-    cx.strokeStyle = css('--agave'); cx.lineWidth = 4; cx.beginPath(); cx.moveTo(rim.x1, rim.y); cx.lineTo(rim.x2 + 8, rim.y); cx.stroke();
-    // aim
-    if (drag) {
-      var vx = (drag.sx - drag.x) * .16, vy = (drag.sy - drag.y) * .16, px = ball.x, py = ball.y;
-      cx.fillStyle = css('--signal');
-      for (var k = 0; k < 30; k++) { vy += .5; px += vx; py += vy; if (k % 3 === 2) { cx.globalAlpha = 1 - k / 30; cx.beginPath(); cx.arc(px, py, 3, 0, 7); cx.fill(); } }
-      cx.globalAlpha = 1;
-    }
-    if (flash > 0) { cx.fillStyle = css('--signal-t'); cx.font = '800 30px ' + (css('--display') || 'sans-serif'); cx.textAlign = 'center'; cx.globalAlpha = Math.min(1, flash / 20); cx.fillText(msg, W / 2, 60); cx.globalAlpha = 1; flash--; }
-  }
-  function step() {
-    if (ball.live) {
-      ball.vy += .5; ball.x += ball.vx; ball.y += ball.vy; ball.t++;
-      // backboard
-      if (ball.x + ball.r > board.x && ball.x < board.x + 8 && ball.y > board.y1 && ball.y < board.y2 && ball.vx > 0) { ball.x = board.x - ball.r; ball.vx *= -.55; }
-      // rim ends
-      [rim.x1, rim.x2 + 8].forEach(function (rx) {
-        var dx = ball.x - rx, dy = ball.y - rim.y, d = Math.hypot(dx, dy);
-        if (d < ball.r + 2) { var nx = dx / d, ny = dy / d, dot = ball.vx * nx + ball.vy * ny; if (dot < 0) { ball.vx -= 1.6 * dot * nx; ball.vy -= 1.6 * dot * ny; } ball.x = rx + nx * (ball.r + 2); ball.y = rim.y + ny * (ball.r + 2); }
-      });
-      // score
-      if (!ball.scored && ball.vy > 0 && ball.y - ball.vy < rim.y && ball.y >= rim.y && ball.x > rim.x1 + 4 && ball.x < rim.x2 + 4) {
-        ball.scored = true; made++; streak++; scoreEl.textContent = made;
-        msg = streak >= 3 ? 'On fire! ' + streak + ' straight' : (streak === 2 ? 'Back to back!' : 'Bucket!'); flash = 50;
-      }
-      // floor
-      if (ball.y + ball.r > 262) { ball.y = 262 - ball.r; ball.vy *= -.5; ball.vx *= .8; }
-      if (ball.x < -30 || ball.x > W + 30 || ball.t > 200) { if (!ball.scored) streak = 0; reset(); }
-    }
-    draw();
-    if (running) requestAnimationFrame(step);
-  }
-  function pt(e) { var r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) * W / r.width, y: (e.clientY - r.top) * H / r.height }; }
-  cv.addEventListener('pointerdown', function (e) { if (ball.live) return; var p = pt(e); if (Math.hypot(p.x - ball.x, p.y - ball.y) > 60) return; drag = { sx: ball.x, sy: ball.y, x: p.x, y: p.y }; cv.setPointerCapture(e.pointerId); });
-  cv.addEventListener('pointermove', function (e) { if (!drag) return; var p = pt(e); drag.x = p.x; drag.y = p.y; });
-  cv.addEventListener('pointerup', function () {
-    if (!drag) return;
-    ball.vx = Math.max(-18, Math.min(18, (drag.sx - drag.x) * .16)); ball.vy = Math.max(-18, Math.min(18, (drag.sy - drag.y) * .16));
-    if (Math.hypot(ball.vx, ball.vy) > 1.5) ball.live = true; drag = null;
-  });
+  var scoreEl = box.querySelector('.hs');
+  var court = makeCourt(box.querySelector('canvas'), function (n) { scoreEl.textContent = n; });
   function open(v) {
     box.hidden = !v; btn.setAttribute('aria-expanded', String(v));
     if (typeof fab !== 'undefined') fab.hidden = v;
-    if (v && !running) { running = true; requestAnimationFrame(step); } else if (!v) running = false;
+    court.run(v);
     if (v) box.querySelector('header button').focus();
   }
   btn.addEventListener('click', function () { open(box.hidden); });

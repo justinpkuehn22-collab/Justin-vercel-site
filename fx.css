@@ -135,3 +135,5 @@ h1,h2{text-transform:uppercase;font-weight:900!important;letter-spacing:.005em!i
 h3{font-weight:800}
 .stat b,.int b,.g-ultra .big,.feat .big,.t .big{font-weight:900}
 .font-note{flex-basis:100%;margin:0;font-size:13px;color:var(--muted);order:3}
+
+.more-ways{flex-basis:100%;font-weight:800;color:var(--signal-ink);text-decoration:underline;text-underline-offset:4px}
