@@ -129,6 +129,10 @@ dd.coke-dd b{color:#E4002B;font-variant-numeric:tabular-nums}
 dd.coke-dd small{font-size:12px;color:var(--muted);font-weight:600}
 @media (prefers-color-scheme: dark){:root:not([data-jk="light"]) .coke-banner b,:root:not([data-jk="light"]) dd.coke-dd b{color:#FF4D5E}}
 :root[data-jk="dark"] .coke-banner b,:root[data-jk="dark"] dd.coke-dd b{color:#FF4D5E}
+.launch{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:14px}
+.launch b{font-family:var(--mono);font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+.launch span{font-size:14.5px;font-weight:600;padding:6px 12px;border-radius:999px;background:color-mix(in srgb,var(--signal) 16%,var(--surface))}
+.launch strong{color:var(--signal-t);font-family:var(--display);font-weight:900;font-size:18px;margin-right:2px}
 </style>
 <link rel="stylesheet" href="fx.css">
 </head>
@@ -153,7 +157,7 @@ dd.coke-dd small{font-size:12px;color:var(--muted);font-weight:600}
     <p class="eyebrow">The builds · 16 projects</p>
     <h1>Why I built it.<br><span>Why it's different.</span></h1>
     <p class="lede">Every company and app I've shipped, with the problem behind it, what was already out there, and what I did that the market wasn't doing.</p>
-    <div class="coke-banner" role="note"><svg class="can" viewBox="0 0 16 24" width="22" height="33" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><span><b data-coke="3997">3,997</b> Cokes consumed building these 16 projects.</span><small>Rough count. I don't drink coffee.</small></div>
+    <div class="coke-banner" role="note"><svg class="can" viewBox="0 0 16 24" width="22" height="33" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><span><b data-coke="4125">4,125</b> Cokes consumed building these 16 projects.</span><small>Rough count. I don't drink coffee.</small></div>
   </div>
 </header>
 
@@ -414,22 +418,23 @@ dd.coke-dd small{font-size:12px;color:var(--muted);font-weight:600}
     </div>
   </article>
 
-  <article class="cs" id="circle-of-friends">
+  <article class="cs" id="mosaic">
     <div class="rail">
-      <div class="vis"><img src="img/shot_circle.jpg" alt="Circle of Friends home page" loading="lazy"></div>
-      <dl class="meta"><dt>Stage</dt><dd><span class="stage live">Live</span></dd><dt>For</dt><dd>Anyone who wants to be a better friend</dd><dt>Built in</dt><dd>Lovable</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="18">18</b><small>and counting</small></dd></dl>
-      <a class="btn" href="https://id-preview--9604305a-4ebb-4d1f-936f-ec2f463b9193.lovable.app" target="_blank" rel="noopener">Open app ↗</a>
+      <div class="vis"><img src="img/shot_mosaic.jpg" alt="Mosaic home page: Know your people. One question at a time." loading="lazy"></div>
+      <dl class="meta"><dt>Stage</dt><dd><span class="stage scale">Growing · 200+ users</span></dd><dt>For</dt><dd>Friends, family, partners and the people you want to know better</dd><dt>Launch</dt><dd>100+ users in the first 12 hours, invite only. 200 in the first week.</dd><dt>Built in</dt><dd>Lovable</dd><dt>Cokes</dt><dd class="coke-dd"><svg class="can" viewBox="0 0 16 24" width="12" height="18" aria-hidden="true"><path d="M3 3h10l1 2v14l-1 2H3l-1-2V5z" fill="#E4002B"/><path d="M3 3h10l-1-2H4z" fill="#C9CED6"/><path d="M3 21h10l-1 2H4z" fill="#C9CED6"/><path d="M4 11c3-2 5 2 8 0" stroke="#fff" stroke-width="1.4" fill="none"/></svg><b data-coke="146">146</b><small>and counting</small></dd></dl>
+      <a class="btn" href="https://id-preview--a6ce73e4-9c57-42ba-a4dc-8248dfd05ff3.lovable.app" target="_blank" rel="noopener">Open app ↗</a>
     </div>
     <div class="story">
-      <h3>Circle of Friends</h3>
-      <p class="pitch">Remember what matters about your people, then prove it.</p>
+      <h3>Mosaic</h3>
+      <p class="pitch">Know your people, one question at a time.</p>
       <div class="blocks">
-        <div class="b"><h4>The problem</h4><p>We forget the small stuff our friends tell us: their favorite food, their sister's name, the thing they were nervous about.</p></div>
-        <div class="b"><h4>Why I built it</h4><p>I want to help people build better connections. It started as a dating app idea, became a way to really know your friends, and I'm working out what it becomes next.</p></div>
-        <div class="b"><h4>What's out there</h4><p>Contacts apps hold a phone number and a birthday. That's it.</p></div>
-        <div class="b diff"><h4>What makes it different</h4><ul><li>Fun prompts make it easy to capture details as you learn them.</li><li>Quiz yourself, or send a quiz and see who knows a friend best on a leaderboard.</li><li>A warm little place for your people, not a CRM.</li></ul></div>
+        <div class="b"><h4>The problem</h4><p>Most of our conversations stay on the surface. Group chats fill up with memes and logistics, and the real stuff about the people we love rarely comes up.</p></div>
+        <div class="b"><h4>Why I built it</h4><p>It started as a dating app idea years ago. I kept coming back to it, and I recently figured out how to turn it into something beautiful: effortless, real conversations and connections with the people already in your life.</p></div>
+        <div class="b"><h4>What's out there</h4><p>Dating apps match strangers. Social apps are built for scrolling. Question card games live in a box on a shelf and only work when you're in the same room.</p></div>
+        <div class="b diff"><h4>What makes it different</h4><ul><li>A back-and-forth game: you ask, they answer, then it's their turn to ask you.</li><li>16 decks, from quick picks and music to philosophy and family, or write your own question.</li><li>Every answer becomes a tile, so your mosaic with each person grows the more you play.</li><li>No swiping and no strangers. Just your people.</li></ul></div>
       </div>
-      <div class="inside"><b>Inside</b><span>Friend profiles</span><span>Prompts</span><span>Tagged notes</span><span>Quizzes</span><span>Leaderboard</span></div>
+      <div class="launch"><b>Launch</b><span><strong>100+</strong> users in the first 12 hours, invite only</span><span><strong>200</strong> users in the first week</span></div>
+      <div class="inside"><b>Inside</b><span>Question decks</span><span>Turn-based play</span><span>Points and levels</span><span>Your mosaic</span></div>
     </div>
   </article>
 
